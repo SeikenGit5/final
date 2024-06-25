@@ -1,6 +1,5 @@
-// Header.js
 import React from "react";
-import './header.css'; // Asegúrate de que el archivo de estilos existe y tiene el contenido adecuado
+import './header.css';
 
 function Header() {
     return (
@@ -11,8 +10,8 @@ function Header() {
             <nav className="nav">
                 <ul className="nav-list">
                     <li className="nav-item"><a href="#login">Inicio de sesión</a></li>
-                    <li className="nav-item"><a href="#help">Ayuda</a></li>
-                    <li className="nav-item"><a href="#faq">FAQ</a></li>
+                    <li className="nav-item"><a href="#nosotras">Nosotras</a></li>
+                    <li className="nav-item"><a href="#subir">Subir</a></li>
                 </ul>
             </nav>
         </header>

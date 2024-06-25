@@ -16,8 +16,8 @@ const Login = () => (
     <main className="card">
         <section className="izquierda">
             <img src="/images/Logo.png" alt="Imagen logo" className="imagen_logo" />
-            <h3 className="titulo_login">Login</h3>
-            <span className="subtitulo">¡Loguéate para empezar!</span>
+            <h3 className="titulo_login">Inicia sesión</h3>
+            <span className="subtitulo">¡Ingresa a una cuenta para empezar!</span>
             <form>
                 <section className="caja_input">
                     <label>E-mail</label>
@@ -32,9 +32,9 @@ const Login = () => (
                 <span className="olvidaste_contraseña">¿Olvidaste tu contraseña?</span>
             </section>
             <section className="control_acceso">
-                <button type="submit">Login</button>
+                <button type="submit">Iniciar sesión</button>
                 <button className="boton_registrar">
-                    <span className="boton_registrar--texto">Registrar</span>
+                    <span className="boton_registrar--texto">Registrarte</span>
                 </button>
             </section>
             <section className="separador">
@@ -45,11 +45,11 @@ const Login = () => (
             <section className="control_login_social">
                 <a href="#">
                     <img src="./Mookup/ic-google.png" alt="Logo Google" />
-                    Login con Google
+                    Ingresar con Google
                 </a>
                 <a href="#">
                     <img src="./Mookup/ic-facebook.png" alt="Logo Facebook" />
-                    Login con Facebook
+                    Ingresar con Facebook
                 </a>
             </section>
         </section>
@@ -97,10 +97,10 @@ function Slidersss(props) {
                     onClick={(activeIndex) => setActiveIndex(activeIndex)} 
                 />
             </div>
-            <div className="content-container">
+            <div className="content-container" id="login">
                 <Login />
             </div>
-            <div className="image-content-container">
+            <div className="image-content-container" id="nosotras">
                 <img src="/images/Logo.png" alt="Placeholder" className="content-image" />
                 <div className="text-content">
                     <h2>¿Quienes Somos?</h2>
