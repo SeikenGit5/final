@@ -11,7 +11,7 @@ function Header() {
                 <ul className="nav-list">
                     <li className="nav-item"><a href="#login">Inicio de sesión</a></li>
                     <li className="nav-item"><a href="#nosotras">Nosotras</a></li>
-                    <li className="nav-item"><a href="#subir">Subir</a></li>
+                    <li className="nav-item"><a href="http://localhost:5173">Comenzar</a></li>
                 </ul>
             </nav>
         </header>
