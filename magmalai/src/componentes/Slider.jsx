@@ -1,4 +1,8 @@
-import './styles.css',
+import mongo from "../imagenes/mongo.png";
+import express from "../imagenes/express.png";
+import react from "../imagenes/react.jpg";
+import node from "../imagenes/node.png";
+import "./Slider.css"
 export default [
     {
         title: "",
