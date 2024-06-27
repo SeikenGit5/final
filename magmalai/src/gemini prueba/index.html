@@ -9,9 +9,10 @@
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items:flex-start;
+            height: 200vh;
             margin: 0;
+            width: 100%;
         }
 
         .container {
@@ -21,7 +22,8 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: relative; 
+            position: relative; /* Para posicionar el icono de carga */
+            margin-top: 50px;
         }
 
         h1 {
@@ -38,7 +40,7 @@
         }
 
         input[type="file"] {
-            display: none; 
+            display: none; /* Ocultar el campo de archivo original */
         }
 
         .button-container {
@@ -64,6 +66,12 @@
             background-color: #372d3a;
         }
 
+        #fileName {
+            color: #372d3a;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
         #responseText {
             margin-top: 20px;
             text-align: left;
@@ -73,17 +81,17 @@
             color: #372d3a;
         }
 
-        
+        /* Estilos para el icono de carga */
         .loader {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            display: none;
+            display: none; /* Inicialmente oculto */
         }
 
         .loader svg {
-            width: 50px; 
+            width: 50px; /* Ajusta el tamaño del icono según sea necesario */
             height: 50px;
             animation: rotate 2s linear infinite;
         }
@@ -100,14 +108,15 @@
 </head>
 <body>
     <div class="container">
-        <h1>¡Pega tu Texto o subí tu archivo y Genera tu resumen!</h1>
-        <p>Puedes modificar el prompt como quieras</p>
+        <h1>¡Subí tu archivo o pegá tu Texto y Generá tu resumen!</h1>
+        <p>Puedes modificar el prompt como quieras.</p>
         <input type="text" id="inputText" value="Genera un resumen y 4 preguntas básicas de la siguiente información">
         <div class="button-container">
             <label for="fileInput" class="custom-file-upload">Seleccionar archivo</label>
             <input type="file" id="fileInput" accept=".docx">
             <button id="generateButton">Generar</button>
         </div>
+        <p id="fileName"></p>
         <p id="responseText"></p>
         <div class="loader" id="loader">
             <!-- Icono de carga animado -->
@@ -134,6 +143,17 @@
         const API_KEY = 'AIzaSyC0orTg-z3EPSj91Wtpf6bBIKAQTSjbuBg'; // Reemplaza 'YOUR_API_KEY' con tu clave de API real
         const genAI = new GoogleGenerativeAI(API_KEY);
         const loader = document.getElementById('loader');
+        const fileNameDisplay = document.getElementById('fileName');
+        const responseText = document.getElementById('responseText');
+
+        document.getElementById('fileInput').addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                fileNameDisplay.textContent = `Archivo seleccionado: ${file.name}`;
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        });
 
         document.getElementById('generateButton').addEventListener('click', async () => {
             const inputText = document.getElementById('inputText').value;
@@ -155,12 +175,13 @@
             }
 
             try {
-                // Mostrar el icono de carga
+                // Limpiar el contenido anterior y mostrar el icono de carga
+                responseText.innerText = '';
                 loader.style.display = 'block';
 
                 const result = await model.generateContent(finalPrompt);
                 const response = await result.response;
-                document.getElementById('responseText').innerText = response.text();
+                responseText.innerText = response.text();
 
                 // Ocultar el icono de carga después de obtener la respuesta
                 loader.style.display = 'none';
